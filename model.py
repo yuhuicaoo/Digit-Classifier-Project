@@ -1,12 +1,5 @@
 import torch
 import torch.nn as nn
-import torchvision.datasets as dsets
-import torchvision.transforms as transforms
-import matplotlib.pyplot as plt
-from torch.utils.data import DataLoader, random_split
-
-device = "cuda" if torch.cuda.is_available() else "cpu"
-torch.manual_seed(42)
 
 class ANN(nn.module):
     def __init__(self, input_size, num_class):
