@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-class ANN(nn.module):
+class ANN(nn.Module):
     def __init__(self, input_size, num_class):
         super(ANN, self).__init__()
         self.network = nn.Sequential(
