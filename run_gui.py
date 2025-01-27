@@ -1,6 +1,5 @@
 import tkinter as tk
 from gui import DigitalCanvas
-from model import ANN
 from helper_funcs import load_model, predict_digit, preprocess_img
 
 def main():
