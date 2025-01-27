@@ -12,6 +12,8 @@ class DigitalCanvas:
         self.image = Image.new("L", (self.width, self.height), 0)
         self.draw = ImageDraw.Draw(self.image)
 
+        self.canvas.bind("<B1-Motion>", self.paint)
+
     def paint(self, event):
         x1, y1 = (event.x - 1), (event.y - 1)
         x2, y2 = (event.x + 1), (event.y + 1)
