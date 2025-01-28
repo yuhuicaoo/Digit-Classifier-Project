@@ -2,6 +2,7 @@ import tkinter as tk
 from model import ANN, CNN
 from gui import DigitalCanvas
 from helper_funcs import load_model, predict_digit, preprocess_img
+import matplotlib.pyplot as plt
 
 
 def main():

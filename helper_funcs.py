@@ -28,7 +28,4 @@ def preprocess_img(image):
     plt.axis('off')
     plt.show()
 
-    # img_tensor = (img_tensor > 0).float()
-    print(img_tensor)
-
     return img_tensor.unsqueeze(0)
