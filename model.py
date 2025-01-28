@@ -26,23 +26,23 @@ class ANN(nn.Module):
 class CNN(nn.Module):
     def __init__(self, num_class):
         super(CNN, self).__init__()
-        self.conv_layers = nn.Sequential([
+        self.conv_layers = nn.Sequential(
             nn.Conv2d(1, 32, kernel_size=3, padding=1), 
             nn.ReLU(),
             nn.MaxPool2d(2,2),
             nn.Conv2d(32, 64, kernel_size=3, padding=1),
             nn.ReLU(),
             nn.MaxPool2d(2,2)
-        ])
+        )
 
-        self.fc_layers = nn.Sequential([
+        self.fc_layers = nn.Sequential(
             nn.Flatten(),
             nn.Linear(64 * 7 * 7, 128),
             nn.ReLU(),
             nn.Dropout(0.3),
             nn.Linear(128, num_class),
             nn.Softmax(dim=1)
-        ])
+        )
 
     def forward(self,x):
         x = self.conv_layers(x)

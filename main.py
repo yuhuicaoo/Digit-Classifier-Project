@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import matplotlib.pyplot as plt
 import os
-from model import ANN
+from model import ANN, CNN
 from train import train_model, evaluate_model
 from get_data import load_data
 
@@ -22,12 +22,13 @@ if __name__ == "__main__":
     train_loader, val_loader, test_loader = load_data(batch_size)
 
     # Initliase model, loss function and optimiser
-    model = ANN(input_size, num_class).to(device)
+    # model = ANN(input_size, num_class).to(device)
+    cnn_model = CNN(num_class).to(device)
     loss_fn = nn.CrossEntropyLoss()
-    optimiser = torch.optim.Adam(model.parameters(), lr=learning_rate)
+    optimiser = torch.optim.Adam(cnn_model.parameters(), lr=learning_rate)
 
     print("\nTraining Model:")
-    train_loss, val_loss = train_model(model, optimiser, train_loader, val_loader, loss_fn, num_epochs, device)
+    train_loss, val_loss = train_model(cnn_model, optimiser, train_loader, val_loader, loss_fn, num_epochs, device)
 
     # Plot training and validation losses
     plt.figure(figsize=(10,6))
@@ -41,7 +42,7 @@ if __name__ == "__main__":
     plt.show()
 
     print("\nEvaluating Model:")
-    model_accuracy = evaluate_model(model, test_loader, device)
+    model_accuracy = evaluate_model(cnn_model, test_loader, device)
 
     os.makedirs("model", exist_ok=True)
-    torch.save(model.state_dict(), "model/neural_network_model.pth")
+    torch.save(cnn_model.state_dict(), "model/cnn_model.pth")

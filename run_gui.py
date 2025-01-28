@@ -8,7 +8,8 @@ def main():
 
     digit_canvas = DigitalCanvas(root)
 
-    model = load_model("model/neural_network_model.pth")
+    # model = load_model("model/neural_network_model.pth")
+    model = load_model("model/cnn_model.pth")
 
     def predict():
         img_tensor = preprocess_img(digit_canvas.image)
