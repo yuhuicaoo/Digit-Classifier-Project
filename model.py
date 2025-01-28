@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+torch.manual_seed(42)
 
 class ANN(nn.Module):
     def __init__(self, input_size, num_class):

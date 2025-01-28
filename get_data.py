@@ -2,6 +2,7 @@ import torch
 import torchvision.datasets as dsets
 import torchvision.transforms as transforms
 from torch.utils.data import DataLoader, random_split
+torch.manual_seed(42)
 
 def load_data(batch_size):
     train_dset = dsets.MNIST(

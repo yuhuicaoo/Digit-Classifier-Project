@@ -1,4 +1,5 @@
 import tkinter as tk
+from model import ANN, CNN
 from gui import DigitalCanvas
 from helper_funcs import load_model, predict_digit, preprocess_img
 
@@ -8,8 +9,9 @@ def main():
 
     digit_canvas = DigitalCanvas(root)
 
-    # model = load_model("model/neural_network_model.pth")
-    model = load_model("model/cnn_model.pth")
+    model = CNN(num_class=10)
+    # model = ANN(28*28, 10)
+    model = load_model(model, "model/cnn_model.pth")
 
     def predict():
         img_tensor = preprocess_img(digit_canvas.image)
