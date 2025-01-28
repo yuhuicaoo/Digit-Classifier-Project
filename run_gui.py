@@ -3,6 +3,7 @@ from model import ANN, CNN
 from gui import DigitalCanvas
 from helper_funcs import load_model, predict_digit, preprocess_img
 
+
 def main():
     root = tk.Tk()
     root.title("Draw a Digit")
@@ -21,10 +22,11 @@ def main():
     clear_button = tk.Button(root, text="Clear", command=digit_canvas.clear)
     clear_button.pack()
 
-    predict_button = tk.Button(root, text="Predict", command = predict)
+    predict_button = tk.Button(root, text="Predict", command=predict)
     predict_button.pack()
 
     root.mainloop()
+
 
 if __name__ == "__main__":
     main()
