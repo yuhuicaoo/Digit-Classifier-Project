@@ -13,13 +13,13 @@ class ANN(nn.Module):
             nn.Linear(512,256),
             nn.ReLU(),
             nn.Linear(256,num_class),
-            nn.Softmax(dim=1) 
+            
         )
 
         # flatten layer to reshape into a 1D vector to pass into the network
         # two hidden layers to help with learning complex representations
         # use dropout layer to help with regularisation
-        # use softmax for multi-class classification (digits from 0-9)
+        # # No softmax layer as pytorch cross-entropy automatically applies it.
     
     def forward(self, x):
         return self.network(x)
@@ -29,9 +29,12 @@ class CNN(nn.Module):
         super(CNN, self).__init__()
         self.conv_layers = nn.Sequential(
             nn.Conv2d(1, 32, kernel_size=3, padding=1), 
+            nn.BatchNorm2d(32),
             nn.ReLU(),
             nn.MaxPool2d(2,2),
+
             nn.Conv2d(32, 64, kernel_size=3, padding=1),
+            nn.BatchNorm2d(64),
             nn.ReLU(),
             nn.MaxPool2d(2,2)
         )
@@ -42,7 +45,7 @@ class CNN(nn.Module):
             nn.ReLU(),
             nn.Dropout(0.3),
             nn.Linear(128, num_class),
-            nn.Softmax(dim=1)
+            # No softmax layer as pytorch cross-entropy automatically applies it.
         )
 
     def forward(self,x):
