@@ -14,7 +14,7 @@ def predict_digit(model, img_tensor):
     with torch.no_grad():
         logits = model(img_tensor)
         probabilities = F.softmax(logits, dim=1)
-        confidence , preds = torch.max(probabilities, 1)
+        _ , preds = torch.max(probabilities, 1)
         probabilities = [round(prob * 100, 2) for prob in probabilities.squeeze().tolist()]
         return preds.item(), probabilities
     
