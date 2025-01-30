@@ -1,56 +1,13 @@
 import torch
 import torch.nn as nn
-import matplotlib.pyplot as plt
 import os
-import math
 from model import ANN, CNN
 from train import train_model, evaluate_model
 from get_data import load_data
+from utils import visualise_samples, plot_metrics
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 torch.manual_seed(42)
-
-def visualise_samples(train_loader, num_samples=10):
-
-    current_image_batch, current_image_label = next(iter(train_loader))
-    display_rows = math.ceil(num_samples / 5)
-
-    plt.figure(figsize=(8,6))
-    for i in range(min(num_samples, current_image_batch.size(0))):
-        plt.subplot(display_rows, 5, i + 1)
-        plt.imshow(current_image_batch[i].squeeze(), cmap='gray')
-        plt.title(f"Label : {current_image_label[i].item()}")
-        plt.axis("off")
-    
-    plt.tight_layout()
-    plt.show()
-
-def plot_metrics(train_losses, val_losses, train_accuracies, val_accuracies, num_epochs):
-    plt.figure(figsize=(8,6))
-
-    # Plot losses
-    plt.subplot(1,2,1)
-    plt.plot(range(1, num_epochs + 1), train_losses, label='Training Loss')
-    plt.plot(range(1, num_epochs + 1), val_losses, label='Validation Loss')
-    plt.xlabel("Epochs")
-    plt.ylabel("Loss")
-    plt.title("Training and Validation Loss")
-    plt.legend()
-    plt.grid()
-
-    # Plot Accuracies
-    plt.subplot(1,2,2)
-    plt.plot(range(1, num_epochs + 1), train_accuracies, label="Training Accuracy")
-    plt.plot(range(1, num_epochs + 1), val_accuracies, label="Validation Accuracy")
-    plt.xlabel("Epochs")
-    plt.ylabel("Accuracy")
-    plt.title("Training and Validation Accuracy")
-    plt.legend()
-    plt.grid()
-
-    plt.tight_layout()
-    plt.show()
-
 
 if __name__ == "__main__":
     # Hyperparameters
