@@ -54,10 +54,10 @@ def plot_metrics(train_losses, val_losses, train_accuracies, val_accuracies, num
 
 if __name__ == "__main__":
     # Hyperparameters
-    batch_size = 100
+    batch_size = 32
     input_size = 28 * 28
     num_class = 10
-    num_epochs = 10
+    num_epochs = 20
     learning_rate = 0.001
 
     # Load data

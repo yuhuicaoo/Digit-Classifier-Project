@@ -17,8 +17,8 @@ class DigitalCanvas:
     def paint(self, event):
         x1, y1 = (event.x - 1), (event.y - 1)
         x2, y2 = (event.x + 1), (event.y + 1)
-        self.canvas.create_oval(x1,y1,x2,y2, outline="white", width=20)
-        self.draw.line([x1,y1,x2,y2], fill="white", width=20)
+        self.canvas.create_oval(x1,y1,x2,y2, outline="white", width=10)
+        self.draw.line([x1,y1,x2,y2], fill="white", width=10)
     
     def clear(self):
         self.canvas.delete("all")
