@@ -32,11 +32,13 @@ class CNN(nn.Module):
             nn.BatchNorm2d(32),
             nn.ReLU(),
             nn.MaxPool2d(2,2),
+            nn.Dropout(0.2),
 
             nn.Conv2d(32, 64, kernel_size=3, padding=1),
             nn.BatchNorm2d(64),
             nn.ReLU(),
-            nn.MaxPool2d(2,2)
+            nn.MaxPool2d(2,2),
+            nn.Dropout(0.2),
         )
 
         self.fc_layers = nn.Sequential(

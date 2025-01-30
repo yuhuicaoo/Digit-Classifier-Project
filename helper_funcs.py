@@ -2,6 +2,8 @@ import torch
 from model import ANN
 from torchvision.transforms import v2
 import matplotlib.pyplot as plt
+import torch.nn.functional as F
+import numpy as np
 
 def load_model(model, model_path):
     model.load_state_dict(torch.load(model_path, weights_only=True))
@@ -10,9 +12,11 @@ def load_model(model, model_path):
 
 def predict_digit(model, img_tensor):
     with torch.no_grad():
-        out = model(img_tensor)
-        _, preds = torch.max(out.data,1)
-        return preds.item()
+        logits = model(img_tensor)
+        probabilities = F.softmax(logits, dim=1)
+        confidence , preds = torch.max(probabilities, 1)
+        probabilities = [round(prob * 100, 2) for prob in probabilities.squeeze().tolist()]
+        return preds.item(), probabilities
     
 def preprocess_img(image):
     transforms = v2.Compose([

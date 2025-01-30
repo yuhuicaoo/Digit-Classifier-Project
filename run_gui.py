@@ -1,3 +1,4 @@
+import torch
 import tkinter as tk
 from model import ANN, CNN
 from gui import DigitalCanvas
@@ -17,8 +18,8 @@ def main():
 
     def predict():
         img_tensor = preprocess_img(digit_canvas.image)
-        prediction = predict_digit(model, img_tensor)
-        print(f"Predicted Digit: {prediction}")
+        prediction, probabilities = predict_digit(model, img_tensor)
+        print(f"Predicted Digit: {prediction}, {probabilities}")
 
     clear_button = tk.Button(root, text="Clear", command=digit_canvas.clear)
     clear_button.pack()
