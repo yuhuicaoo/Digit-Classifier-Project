@@ -1,5 +1,3 @@
 .git
 .gitattributes
 __pycache__/
-/data/
-/model/
