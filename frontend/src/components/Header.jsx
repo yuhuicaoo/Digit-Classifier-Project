@@ -7,7 +7,7 @@ function Header() {
             <div className="container">
                 <div className="row">
                     <div className="content-wrapper">
-                        <h1 className='header-title'>Digit Classifier</h1>
+                        <h1 className='header-title purple'>Digit Classifier</h1>
                     </div>
                 </div>
             </div>
