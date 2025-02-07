@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useCallback, useState } from "react";
 import axios from "axios";
 
 function Canvas({ setPrediction, setIsLoading }) {
+  const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8000"
   const canvasRef = useRef(null);
   const isDrawing = useRef(false);
   const [isCanvasEmpty, setIsCanvasEmpty] = useState(true);
@@ -81,7 +82,7 @@ function Canvas({ setPrediction, setIsLoading }) {
       formData.append("file", blob, "digit.png");
 
       try {
-        const response = await axios.post("http://localhost:8000", formData, {
+        const response = await axios.post(`${apiUrl}`, formData, {
           headers: { "Content-Type": "multipart/form-data" },
         });
 

@@ -1,6 +1,7 @@
 venv/
 __pycache__/
 *.pyc
+.git
 
 backend/__pycache__/
 backend/*.pyc
